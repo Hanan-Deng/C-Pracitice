@@ -1,0 +1,77 @@
+#include<iostream>
+#include<algorithm>
+#include<string>
+#include<vector>
+using namespace std;
+
+int main()
+{
+    string s;
+    getline(cin,s);
+    int p=0,q=0, n=s.size()-1;
+    for(int i=0;i<s.size();i++)
+    {
+        if((s[i]>='a'&&s[i]<='z')||(s[i]>='A'&&s[i]<='Z')||(s[i]==' '))
+        {
+            continue;
+        }
+        else
+        {
+            s[i]=' ';
+        }
+    }
+   for(int p=0,q=0;p<s.size();p++)
+    {
+       if(s[p]!=' ')
+       {
+           s[q]=s[p];
+           q++;
+       }
+       else if (s[p]==' '&&q==0)
+       {
+           continue;
+       }
+       else if (s[p]==' '&&q>0&&p<s.size()-1)
+       {
+           if(s[p+1]!=' ')
+           {
+               s[q]=' ';
+               q++;
+           }
+           continue;
+       }
+    }
+    if(q<p&&s[n]!=' ')
+    {
+        s[n]=' ';
+    }
+   for(int i=s.size()-1;i>=0;i--)
+   {
+        if(s[i]!=' ')
+        {
+            s.erase(s.begin()+i+1,s.end());
+            //s.resize(i);
+            break;
+        }       
+   }
+    reverse(s.begin(),s.end());
+    int flag=0;
+    for(int i=0;i<s.size();i++)
+    {
+        if(s[i]==' ')
+        {
+            reverse(s.begin()+flag,s.begin()+i);
+            flag=i+1;
+        }
+    }
+   for(int i=s.size()-1;i>=0;i--)
+   {
+        if(s[i]==' ')
+        {
+            reverse(s.begin()+i+1,s.end());
+            break;
+        }       
+   }  
+    cout<<s<<endl;
+    
+}
