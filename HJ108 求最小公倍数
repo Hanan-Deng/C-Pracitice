@@ -1,0 +1,50 @@
+#include<iostream>
+using namespace std;
+//求最大公约数
+    int common(int a, int b)
+    {
+        int tmp=abs(a-b);
+    while(tmp!=0)
+    {
+        a=b;
+        b=tmp;
+        tmp=abs(a-b);
+    }
+        return b;
+    }
+int main()
+{
+//     int a,b;
+//     cin>>a>>b;
+//     //最小公倍数一定是较大者的整数倍
+//     //a*b一定是a、b的公倍数，但不一定是最小的
+//     //所以我们从i=1,到i=min(a,b)一一遍历去寻找最小公倍数
+ 
+//     for(int i=1;i<=min(a,b);i++)
+//     {
+//         int times=i*max(a,b);
+//         if(times%a==0&&times%b==0)
+//         {
+//             cout<<times<<endl;
+//             break;
+//         }
+//     }
+//     return 0;
+    //求最小公倍数
+    int a, b;
+    cin>>a>>b;
+   int tmp=abs(a-b);
+    int m=a*b;
+    while(tmp!=0)
+    {
+        a=b;
+        b=tmp;
+        tmp=abs(a-b);
+    }
+    int n=m/b;
+    cout<<n<<endl;
+    return 0;
+    
+    
+    
+}
