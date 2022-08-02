@@ -1,0 +1,33 @@
+#include<iostream>
+#include<string>
+#include<set>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int j=0;
+    string s;
+    cin>>s;
+//     sort(s.begin(),s.end());
+    for(int i=0;i<s.size();i++)
+    {
+        for(int p=i+1;p<s.size();p++)
+        {
+            if(s[i]>s[p])
+            {
+                swap(s[i],s[p]);
+            }
+        }
+    }
+    for(int i=0;i<s.size();i++)
+    {
+        if(i>0&&s[i]==s[i-1])
+        {
+            continue;
+        }
+        s[j]=s[i];
+        j++;
+    }
+    cout<<j<<endl;
+}
