@@ -1,0 +1,148 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <set>
+
+// using namespace std;
+// //去除无效的子串
+// //将有效的字串转化成一维数组（只有两个元素）
+// //将所有s[0]相加，所有的s[1]相加
+// string transformToArray(string ps)
+// {
+    int m=0;
+    int n=0;
+//     string cs;
+//     string result;
+//     for(int i=0;i<ps.size();i++)
+//     {
+//         int flag=0;
+//         if(ps[i]!=';')
+//         {
+//             cs+=ps[i];
+//         }
+//         else if(i>0&&ps[i-1]!=';'&&ps[i]==';')
+//         { 
+//             if(cs[0]!='A'&&cs[0]!='D'&&cs[0]!='S'&&cs[0]!='W')
+//             {
+//                 continue;
+//             }
+//             else
+//             {
+//                 for(int j=1;j<=cs.size()-1;j++)
+//                 {
+//                     if(cs[j]<0||cs[j]>9)
+//                     {
+//                         break;
+//                     }
+//                 }
+//                 if(cs[0]=='A')
+//                   {
+//                     string sub=cs.substr(1,cs.size()-1);
+//                     int p=stoi(sub);
+//                      m-=p;
+//                     cs.erase(cs.begin(),cs.end());
+//                     sub.erase(sub.begin(),sub.end());
+//                  }
+//                  if(cs[0]=='D')
+//                   {
+//                     string sub=cs.substr(1,cs.size()-1);
+//                     int p=stoi(sub);
+//                      m+=p;
+//                     cs.erase(cs.begin(),cs.end());
+//                      sub.erase(sub.begin(),sub.end());
+//                  }
+//                  if(cs[0]=='S')
+//                   {
+//                     string sub=cs.substr(1,cs.size()-1);
+//                     int p=stoi(sub);
+//                      n-=p;
+//                     cs.erase(cs.begin(),cs.end());
+//                      sub.erase(sub.begin(),sub.end());
+//                  }
+//                  if(cs[0]=='W')
+//                   {
+//                     string sub=cs.substr(1,cs.size()-1);
+//                     int p=stoi(sub);
+//                      n+=p;
+//                     cs.erase(cs.begin(),cs.end());  
+//                      sub.erase(sub.begin(),sub.end());
+//                  }
+//             }
+//             flag=i+1;
+//         }
+//     }
+//     char a=m+'0';
+//     char b=n+'0';
+//     result+=a;
+//     result+=',';
+//     result+=b;
+//     return result;
+// }
+
+// int main()
+// {
+//     string s;
+//     getline(cin,s);
+//     cout<<transformToArray(s)<<endl;
+//     return 0;
+// }
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    string str1;
+    getline(cin, str1);
+    int flag = 0;
+    vector<string> zuobiao;
+    vector<int> res(2, 0);
+    for (int i = 0; i < str1.size(); i++) {
+        if (str1[i] == ';') {
+            string tmp = str1.substr(flag, i - flag);
+            if (tmp.size() == 2 || tmp.size() == 3) {
+                if (tmp[0] == 'A' || tmp[0] == 'W' || tmp[0] == 'S' || tmp[0] == 'D') {
+                    if (tmp[1] >= '0' && tmp[1] <= '9') {
+                        if (tmp.size() == 3) {
+                            if (tmp[2] >= '0' && tmp[2] <= '9') {
+                                zuobiao.push_back(tmp);
+                            }
+                        }else{
+                            zuobiao.push_back(tmp);
+                        }
+                    }
+                }
+            }
+            flag = i + 1;
+        }
+    }
+for(int i=0;i<zuobiao.size();i++)
+{
+    if(zuobiao[i][0]=='A')
+       {
+        string sub=zuobiao[i].substr(1,zuobiao[i].size()-1);
+         int p=stoi(sub);
+         m-=p;
+       }
+     if(zuobiao[i][0]=='D')
+       {
+        string sub=zuobiao[i].substr(1,zuobiao[i].size()-1);
+         int p=stoi(sub);
+         m+=p;
+       } 
+         if(zuobiao[i][0]=='W')
+       {
+        string sub=zuobiao[i].substr(1,zuobiao[i].size()-1);
+         int p=stoi(sub);
+         n+=p;
+       }
+       if(zuobiao[i][0]=='S')
+       {
+        string sub=zuobiao[i].substr(1,zuobiao[i].size()-1);
+         int p=stoi(sub);
+         n-=p;
+       }
+}
+        cout <<m << "," << n;
+ 
+    return 0;
+}
+
+
