@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int n=0;
+int computeLength(string s)
+{
+    for(int i=s.size()-1;i>=0;i--)
+    {
+        if(s[i]!=' ')
+        {
+            n++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    return n;
+}
+int main()
+{
+      string s;
+    getline(cin,s);
+    cout<<computeLength(s)<<endl;
+    return 0;
+}
