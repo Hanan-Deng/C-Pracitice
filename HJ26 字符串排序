@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+vector<char> v;
+string sortString(string s)
+{
+    for(int j=0;j<26;j++)
+    {
+    for(int i=0;i<s.size();i++)
+    {
+        if((s[i]-'a')==j||(s[i]-'A')==j)
+                           {
+                               v.push_back(s[i]);
+                           }
+     }
+    }
+     for(int i=0,j=0;i<s.size(),j<v.size();i++)
+                           {
+                               if(s[i]>='a'&&s[i]<='z'||s[i]>='A'&&s[i]<='Z')
+                               {
+                                   s[i]=v[j];
+                                   j++;
+                               }
+                           }
+    return s;                       
+}
+int main()
+{
+    string s;
+    getline(cin, s);
+    cout<<sortString(s)<<endl;
+    return 0;
+    
+}
