@@ -1,0 +1,104 @@
+#include<iostream>
+#include<cstring>
+#include<algorithm>
+#include<vector>
+using namespace std;
+//求给定单词的排列组合，每个组合放到 path中，所有组合放到 result中，采用回溯法
+string path;
+vector<string> result;
+vector<bool>used;
+int k=0;
+void backtracking(string s1)
+{
+    if(path.size()==s1.size())
+    {
+        result.push_back(path);
+        return;
+    }
+    for(int i=0;i<s1.size();i++)
+    {
+        if(used[i]==true)
+        {
+            continue;
+        }
+        path+=s1[i];
+        used[i]=true;
+        backtracking(s1);
+        path.erase(path.end());
+        used[i]=false; 
+    }
+}
+vector<string> vecString(string s2)
+{
+    sort(s2.begin(),s2.end());
+    vector<bool>used(s2.size(),false);
+    backtracking(s2);
+    return result;
+    
+}
+int main()
+{
+    int n;
+    cin>>n;
+    vector<string> vec;
+    string s;
+    int m=0;
+    //从有字母的字符开始计算并push到vec中
+    for(int i=0;i<s.size();i++)
+    {
+        if(s[i]>='0'&&s[i]<='9'||s[i]==' ')
+        {
+            m++;
+            break;
+        } 
+    }
+    //找出k来
+    for(int i=s.size()-1;i>0;i--)
+    {
+        if(s[i]==' ')
+        {
+            string tmp=s.substr(i+1,s.size());
+            k=stoi(tmp);
+            break;
+        } 
+    }    
+     int flag=m;
+    for(int i=m;i<s.size();i++)
+    {     
+        if(s[i]==' ')
+        {
+            string tmp=s.substr(flag,i-flag);
+            vec.push_back(tmp);
+            flag=i+1;
+        }  
+    }
+    //对除最后一个给到单词外的所有单词按照字典排序
+    sort(vec.begin(),vec.begin()+n);
+    //求给定单词的排列组合，每个组合放到 path中，所有组合放到 result中
+    vecString(vec[n]);
+    //求兄弟组合的个数，和第一个字典序的单词
+    int count=0;
+    string brother;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<result.size();j++)
+        {
+            if(vec[i]==result[j]&&vec[i]!=vec[n])
+            {
+                count++;
+                if(count==k)
+                {
+                    brother=vec[i];
+                }
+            }
+        }
+
+    }
+    
+    cout<<count<<endl;
+    if(count>=k)
+    {
+      cout<<brother<<endl;  
+    }
+        
+}
