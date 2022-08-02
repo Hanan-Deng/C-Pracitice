@@ -1,0 +1,77 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    string s;
+    vector<string> vec;
+    vector<bool> v1(4,false);
+    int count=0;
+     while(cin>>s)
+     {
+         vec.push_back(s);
+     }
+    for(int p=0;p<vec.size();p++)
+    {
+        if(vec[p].size()<8)
+        {
+            cout<<"NG"<<endl;
+        }
+        else
+        {
+        for(int i=0;i<s.size();i++)
+        {
+            if(vec[p][i]>='0'&&vec[p][i]<='9')
+            {
+               v1[0]=true;
+            }
+            else if(vec[p][i]>='a'&&vec[p][i]<='z')
+            {
+                v1[1]=true;
+            }
+           else if(vec[p][i]>='A'&&vec[p][i]<='Z')
+            {
+               v1[2]=true;
+            }
+            else
+            {
+                v1[3]=true;
+            }        
+        }
+        for(int i=0;i<4;i++)
+        {
+            if(v1[i]==true)
+            {
+                count++;
+            }
+        }
+        if(count<=2)
+        {
+            cout<<"NG"<<endl;
+        }
+        else
+        {
+         for(int i=0;i<s.size()-3;i++)
+         {
+             int m=0;
+             string sub=s.substr(i,i+3);
+             for(int j=i+3;j<s.size();j++)
+             {
+                 if(sub[i]==s[j])
+                 {
+                     m++;
+                 }
+             }
+             if (m==3)
+             {
+                cout<<"NG"<<endl; 
+             }
+         }
+        cout<<"OK"<<endl; 
+        }
+        }
+   }  
+    return 0;
+}
