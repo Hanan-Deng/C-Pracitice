@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+  
+int main() {
+string s;
+    while(cin>>s){
+    int bit = 0; //记录当前位数
+        int res = 0;
+        for(int i = s.length() - 1; i > 1; i--){
+            if(s[i] >= '0' && s[i] <= '9'){
+                res += (s[i] - '0') * pow(16, bit); //当前数字乘16的位数次方
+                bit++;
+            }
+            else if(s[i] >= 'A' && s[i] <= 'F'){
+                res += (s[i] - 'A' + 10) * pow(16, bit); //字母要转化成数字
+                bit++;
+            }
+        }
+        cout << res << endl;
+    }
+    return 0;   
+    }
