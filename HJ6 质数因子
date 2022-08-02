@@ -1,0 +1,31 @@
+#include<iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    long int n = 0;
+    cin >> n;
+    int i = 2;
+    while(n!=1)
+    {
+      if(n%i==0)
+      {
+          n/=i;
+          cout<<i<<' ';
+      }
+        else
+        {
+            if(i==2)
+            {
+                i++;
+            }
+            else
+            {
+                i+=2;
+            }
+        }
+    }       
+        
+    return 0;
+}
