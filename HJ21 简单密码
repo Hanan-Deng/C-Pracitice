@@ -1,0 +1,61 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+    string s;
+    getline(cin,s);
+    for(int i=0;i<s.size();i++)
+    {
+        if(s[i]>='a'&&s[i]<='z')
+        {
+            if(s[i]=='a'||s[i]=='b'||s[i]=='c')
+            {
+                s[i]='2';
+            }
+             if(s[i]=='d'||s[i]=='e'||s[i]=='f')
+            {
+                s[i]='3';
+            }
+            if(s[i]=='g'||s[i]=='h'||s[i]=='i')
+            {
+                s[i]='4';
+            }            
+            if(s[i]=='j'||s[i]=='k'||s[i]=='l')
+            {
+                s[i]='5';
+            } 
+            if(s[i]=='m'||s[i]=='n'||s[i]=='o')
+            {
+                s[i]='6';
+            }
+             if(s[i]=='p'||s[i]=='q'||s[i]=='r'||s[i]=='s')
+            {
+                s[i]='7';
+            }
+            if(s[i]=='t'||s[i]=='u'||s[i]=='v')
+            {
+                s[i]='8';
+            }
+             if(s[i]=='w'||s[i]=='x'||s[i]=='y'||s[i]=='z')
+            {
+                s[i]='9';
+            }    
+        }
+        if(s[i]>='A'&&s[i]<='Z')
+            {
+                if(s[i]>='A'&&s[i]<'Z')
+                {
+                    s[i]=s[i]+33;
+                }
+                else
+                {
+                    s[i]='a';
+                }
+           }
+    }
+    cout<<s<<endl;
+    return 0;
+    
+}
