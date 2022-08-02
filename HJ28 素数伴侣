@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <iostream>
+#include <vector>
+#include <math.h>
+#include <algorithm>
+#include <vector>
+using namespace std;
+vector<int> path;
+vector<int> result;
+void backtracking(vector<int> nums,int startIndex)
+{
+    if(path.size()==2)
+    {
+        int m=path[0]+path[1];
+        result.push_back(m);
+    }
+    for(int i=startIndex;i<nums.size();i++)
+    {
+        path.push_back(nums[i]);
+        backtracking(nums,0);
+        path.pop_back();
+    }
+}
+
+vector<int> totalSum(vector<int> nums)
+{
+    backtracking(nums,0);
+    return result;
+}
+bool primeNum(int m)
+{
+    int i=2;
+    while(m/i!=0&&i<m)
+    {
+        if(i==2)
+        {
+            i++;
+        }
+        else
+        {
+            i+=2;
+        }
+    }
+    if(i<m)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+int main() 
+{
+    int n;
+    cin>>n;
+    vector<int> coupleSource;
+    int k;
+    int sum;
+    while(cin>>k)
+    {
+        coupleSource.push_back(k);
+    }
+    totalSum(coupleSource);
+    for(int i=0;i<result.size();i++)
+    {
+        if(primeNum(result[i])==true)
+        {
+            sum++;
+        }
+    }
+    cout<<sum<<endl;
+}
