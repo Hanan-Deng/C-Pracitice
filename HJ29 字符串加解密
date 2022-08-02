@@ -1,0 +1,86 @@
+#include <string>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    string s;
+    vector<string> vec;
+    for(int i=0;i<2;i++)
+    {
+        cin>>s;
+        vec.push_back(s);
+    }
+    for(int i=0;i<vec[0].size();i++)
+    {
+        if(vec[0][i]>='0'&&vec[0][i]<='9')
+        {
+            if(vec[0][i]>='0'&&vec[0][i]<'9')
+            {
+                vec[0][i]+=1;
+            }
+            else
+            {
+                vec[0][i]='0';
+            }
+        }
+        else if(vec[0][i]>='a'&&vec[0][i]<='z'||vec[0][i]>='A'&&vec[0][i]<='Z')
+        {
+            if(vec[0][i]>='a'&&vec[0][i]<'z')
+            {
+                vec[0][i]-=31;
+            }
+            else if(vec[0][i]=='z')
+            {
+                vec[0][i]='A';
+            }
+            else if(vec[0][i]>='A'&&vec[0][i]<'Z')
+            {
+                vec[0][i]+=33;
+            }  
+            else 
+            {
+               vec[0][i]='a';
+            }
+        }
+    }
+ for(int i=0;i<vec[1].size();i++)
+    {
+        if(vec[1][i]>='0'&&vec[1][i]<='9')
+        {
+            if(vec[1][i]>'0'&&vec[1][i]<='9')
+            {
+                vec[1][i]-=1;
+            }
+            else
+            {
+                vec[1][i]='9';
+            }
+        }
+        else if(vec[1][i]>='a'&&vec[1][i]<='z'||vec[1][i]>='A'&&vec[1][i]<='Z')
+        {
+            if(vec[1][i]>'a'&&vec[1][i]<='z')
+            {
+                vec[1][i]-=33;
+            }
+            else if(vec[1][i]=='a')
+            {
+                vec[1][i]='Z';
+            }
+            else if(vec[1][i]>'A'&&vec[1][i]<='Z')
+            {
+                vec[1][i]+=31;
+            }  
+            else 
+            {
+                vec[1][i]='z';
+            }
+        }
+    }   
+    for(int i=0;i<2;i++)
+    {
+        cout<<vec[i]<<endl;
+    }    
+    return 0;
+}
